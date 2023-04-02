@@ -1,0 +1,7 @@
+[webservers]
+
+%{~ for i, k in webservers ~}
+
+${i}  ansible_host=${k}
+
+%{~ endfor ~}
