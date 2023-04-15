@@ -30,12 +30,12 @@ variable "default_zone" {
 ### network and subnet
 
 variable "env_network_name" {
-  type = string
+  type        = string
   description = "Network name"
 }
 
 variable "env_subnet_name" {
-  type = string
+  type        = string
   description = "Subnet name"
 }
 

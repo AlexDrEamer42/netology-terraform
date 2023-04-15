@@ -29,69 +29,69 @@ variable "default_zone" {
 ### Cluster settings
 
 variable "name" {
-  type = string
+  type        = string
   description = "Cluster name"
 }
 
 variable "network_id" {
-  type = string
+  type        = string
   description = "Cluster network id"
 }
 
 variable "ha" {
-  type = bool
+  type        = bool
   description = "Enable HA?"
 }
 
 variable "mysql_version" {
-  type = string
-  default = "8.0"
+  type        = string
+  default     = "8.0"
   description = "MySQL version"
 }
 
 variable "environment" {
-  type = string
-  default = "PRESTABLE"
+  type        = string
+  default     = "PRESTABLE"
   description = "Environment type"
 }
 
 variable "del_protect" {
-  type = bool
-  default = false
+  type        = bool
+  default     = false
   description = "Deletion protection?"
 }
 
 variable "security_groups" {
-  type = list(string)
-  default = []
+  type        = list(string)
+  default     = []
   description = "Security groups ids"
 }
 
 variable "host_class" {
-  type = string
-  default = "s1.micro"
+  type        = string
+  default     = "s1.micro"
   description = "Host class"
 }
 
 variable "disk_type" {
-  type = string
-  default = "network-hdd"
+  type        = string
+  default     = "network-hdd"
   description = "Disks type"
 }
 
 variable "disk_size" {
-  type = number
-  default = 10
+  type        = number
+  default     = 10
   description = "Storage size"
 }
 
 variable "zone" {
-  type = string
+  type        = string
   description = "Zone"
 }
 
 variable "subnet" {
-  type = string
+  type        = string
   description = "Subnet id"
 }
 

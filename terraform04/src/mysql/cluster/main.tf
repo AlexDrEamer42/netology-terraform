@@ -19,7 +19,7 @@ resource "yandex_mdb_mysql_cluster" "mysql_cluster" {
   }
 
   dynamic "host" {
-   for_each = ( var.ha ? [1] : [] )
+    for_each = (var.ha ? [1] : [])
     content {
       zone      = var.zone
       subnet_id = var.subnet
@@ -27,7 +27,7 @@ resource "yandex_mdb_mysql_cluster" "mysql_cluster" {
   }
 
   dynamic "host" {
-   for_each = ( var.ha ? [1] : [] )
+    for_each = (var.ha ? [1] : [])
     content {
       zone      = var.zone
       subnet_id = var.subnet

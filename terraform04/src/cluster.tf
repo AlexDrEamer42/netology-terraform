@@ -11,12 +11,12 @@ module "mysql_cluster" {
 }
 
 module "database" {
-  source        = "./mysql/bd"
-  cluster_id    = module.mysql_cluster.cluster_id
-  db_name       = "test"
-  user_name     = "app"
-  user_pass     = "secret123"
-  token         = var.token
-  cloud_id      = var.cloud_id
-  folder_id     = var.folder_id
+  source     = "./mysql/bd"
+  cluster_id = module.mysql_cluster.cluster_id
+  db_name    = "test"
+  user_name  = "app"
+  user_pass  = "secret123"
+  token      = var.token
+  cloud_id   = var.cloud_id
+  folder_id  = var.folder_id
 }

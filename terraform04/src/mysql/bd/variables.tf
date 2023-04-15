@@ -29,25 +29,25 @@ variable "default_zone" {
 ### Database and user
 
 variable "cluster_id" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Cluster id"
 }
 
 variable "db_name" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Database name"
 }
 
 variable "user_name" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Username"
 }
 
 variable "user_pass" {
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
   description = "User password"
 }
