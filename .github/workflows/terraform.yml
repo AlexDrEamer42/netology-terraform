@@ -32,6 +32,7 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tf_working_dir: ./terraform04/src
       - name: 'Terraform Validate'
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -41,6 +42,7 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tf_working_dir: ./terraform04/src
       - name: 'Terraform Plan'
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -50,6 +52,7 @@ jobs:
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tf_working_dir: ./terraform04/src
   lint:
     name: Terraform Lint on PR
     runs-on: ubuntu-latest
