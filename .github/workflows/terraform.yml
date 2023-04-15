@@ -3,7 +3,7 @@ on:
   - pull_request
   - push
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  - workflow_dispatch
 env:
   tf_version: 'latest'
   tf_working_dir: '.'
