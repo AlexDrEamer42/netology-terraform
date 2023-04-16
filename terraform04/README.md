@@ -88,4 +88,4 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 ### Задание 4*
 
-Создал переменные с валидацией в файле [var_validation.tf](/src/var_validation.tf)
+Создал переменные с валидацией в файле [var_validation.tf](terraform04//src/var_validation.tf)
