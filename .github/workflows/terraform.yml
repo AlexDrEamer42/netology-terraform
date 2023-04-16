@@ -14,11 +14,11 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
-      - name: 'Prepare'
-        run: |
-          curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-          yc config set service-account-key "${{ secrets.CI_CLOUD_ROBOT }}"
-          export cloud_access_token=$(yc iam create-token)
+      - name: 'IAM-Token'
+        id: issue-iam-token
+        uses: yc-actions/yc-iam-token@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.CI_CLOUD_ROBOT }}
       - name: 'Terraform Format'
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -52,7 +52,7 @@ jobs:
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'plan -var="token=${cloud_access_token}" -out=outfile'
+          tf_actions_subcommand: 'plan -var="token=${{ steps.IAM-Token.outputs.token }}" -out=outfile'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
