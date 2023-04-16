@@ -52,12 +52,13 @@ jobs:
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'plan -var="token=${{ steps.IAM-Token.outputs.token }}" -out=outfile'
+          tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tf_working_dir: ./terraform04/src
+          token = ${{ steps.IAM-Token.outputs.token }}"
   lint:
     name: Terraform Lint on PR
     runs-on: ubuntu-latest
