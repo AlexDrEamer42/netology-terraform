@@ -58,7 +58,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tf_working_dir: ./terraform04/src
-          token = ${{ steps.IAM-Token.outputs.token }}"
+          token: ${{ steps.IAM-Token.outputs.token }}"
   lint:
     name: Terraform Lint on PR
     runs-on: ubuntu-latest
