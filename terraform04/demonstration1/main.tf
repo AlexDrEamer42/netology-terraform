@@ -2,31 +2,35 @@ terraform {
   required_providers {
     yandex = {
       source = "yandex-cloud/yandex"
+      version = ">=0.13"
+    }
+    template = {
+      source = "hashicorp/template"
+      version = ">=2.0"
     }
   }
   required_version = ">=0.13"
 
   backend "s3" {
-  endpoint = "storage.yandexcloud.net"
-  bucket   = "tfstate-develop-42"
-  region   = "ru-central1"
-  key      = "terraform.tfstate"
+    endpoint = "storage.yandexcloud.net"
+    bucket   = "tfstate-develop-42"
+    region   = "ru-central1"
+    key      = "terraform.tfstate"
 
-  skip_region_validation      = true
-  skip_credentials_validation = true
+    skip_region_validation      = true
+    skip_credentials_validation = true
 
-  dynamodb_endpoint = "https://docapi.serverless.yandexcloud.net/ru-central1/b1g1nmcaed0kbughlnoh/etn0of5p4rua2dsfk5jr"
-  dynamodb_table    = "tflock-develop"
+    dynamodb_endpoint = "https://docapi.serverless.yandexcloud.net/ru-central1/b1g1nmcaed0kbughlnoh/etn0of5p4rua2dsfk5jr"
+    dynamodb_table    = "tflock-develop"
+  }
+
 }
-
-}
-
-provider "yandex" {
-  token     = var.token
-  cloud_id  = var.cloud_id
-  folder_id = var.folder_id
-  zone      = var.default_zone
-}
+  provider "yandex" {
+    token     = var.token
+    cloud_id  = var.cloud_id
+    folder_id = var.folder_id
+    zone      = var.default_zone
+  }
 
 
 
@@ -44,7 +48,7 @@ resource "yandex_vpc_subnet" "develop" {
 }
 
 module "test-vm" {
-  source          = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+  source          = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=test"
   env_name        = "develop"
   network_id      = yandex_vpc_network.develop.id
   subnet_zones    = ["ru-central1-a"]
@@ -52,7 +56,8 @@ module "test-vm" {
   instance_name   = "web"
   instance_count  = 2
   image_family    = "ubuntu-2004-lts"
-  public_ip       = true
+  public_ip       = false
+  security_group_ids = ["enp63ruhhg5u9uv1pu22"]
   
   metadata = {
       user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
